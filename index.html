@@ -23,6 +23,10 @@
   header .tags { margin-top:13px; display:flex; flex-wrap:wrap; gap:8px; }
   header .tags span { background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.3);
     padding:3px 11px; border-radius:20px; font-size:12px; }
+  header .inner { position:relative; }
+  .hclock { position:absolute; top:0; right:0; text-align:right; font-size:12px; line-height:1.6; opacity:.95; }
+  .hclock .hclive { font-weight:700; font-size:15px; font-variant-numeric:tabular-nums; letter-spacing:.5px; }
+  @media (max-width:820px) { .hclock { font-size:10.5px; } .hclock .hclive { font-size:12.5px; } }
 
   .colswitch { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:20px 0 4px; }
   .colbtn { background:var(--card); border:2px solid var(--line); border-radius:12px;
@@ -212,6 +216,10 @@
 
 <header>
   <div class="inner">
+    <div class="hclock">
+      <div class="hclive" id="hclockTime">--:--:--</div>
+      <div class="hcupd">更新 2026-09-15</div>
+    </div>
     <h1>期货与期权入门知识库</h1>
     <div class="sub">给第一次接触期货与期权的你 —— 从「这是什么」到「这个品种该看什么」</div>
     <div class="tags">
@@ -3072,6 +3080,17 @@ if (oqEl) oqEl.addEventListener('input', function() {
     g.style.display = shown ? '' : 'none';
   });
 });
+</script>
+<script>
+function kbTick() {
+  var d = new Date();
+  var wk = ['周日','周一','周二','周三','周四','周五','周六'][d.getDay()];
+  var p = function(n) { return n < 10 ? '0' + n : '' + n; };
+  var el = document.getElementById('hclockTime');
+  if (el) el.textContent = p(d.getMonth()+1) + '-' + p(d.getDate()) + ' ' + wk + ' ' + p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds());
+}
+kbTick();
+setInterval(kbTick, 1000);
 </script>
 <script>
 if ('serviceWorker' in navigator && location.protocol === 'https:') {
