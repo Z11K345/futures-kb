@@ -208,7 +208,12 @@
     .feat-t { flex:none; }
     .kline-item, .method { flex-direction:column; gap:2px; }
     .k-t, .m-t { flex:none; }
-    header h1 { font-size:22px; }
+    nav .inner { flex-wrap:wrap; overflow-x:visible; padding:0 8px; }
+    nav button { padding:9px 9px; font-size:13px; border-bottom-width:2px; }
+    nav button.active { font-weight:700; }
+    table { display:block; overflow-x:auto; }
+    header h1 { font-size:20px; padding-right:112px; }
+    header .sub { padding-right:112px; }
   }
 </style>
 </head>
@@ -2967,6 +2972,13 @@
 <script>
 var DATA = {"铁矿石": {"unit": "100 吨/手", "tick": "0.5 元/吨", "val": 50}, "焦炭": {"unit": "100 吨/手", "tick": "0.5 元/吨", "val": 50}, "焦煤": {"unit": "60 吨/手", "tick": "0.5 元/吨", "val": 30}, "玻璃": {"unit": "20 吨/手", "tick": "1 元/吨", "val": 20}, "纯碱": {"unit": "20 吨/手", "tick": "1 元/吨", "val": 20}, "螺纹钢": {"unit": "10 吨/手", "tick": "1 元/吨", "val": 10}, "热卷": {"unit": "10 吨/手", "tick": "1 元/吨", "val": 10}, "线材": {"unit": "10 吨/手", "tick": "1 元/吨", "val": 10}, "硅铁": {"unit": "5 吨/手", "tick": "2 元/吨", "val": 10}, "锰硅": {"unit": "5 吨/手", "tick": "2 元/吨", "val": 10}, "沪铜": {"unit": "5 吨/手", "tick": "10 元/吨", "val": 50}, "国际铜": {"unit": "5 吨/手", "tick": "10 元/吨", "val": 50}, "铝合金": {"unit": "10 吨/手", "tick": "5 元/吨", "val": 50}, "沪铝": {"unit": "5 吨/手", "tick": "5 元/吨", "val": 25}, "沪锌": {"unit": "5 吨/手", "tick": "5 元/吨", "val": 25}, "沪铅": {"unit": "5 吨/手", "tick": "5 元/吨", "val": 25}, "不锈钢": {"unit": "5 吨/手", "tick": "5 元/吨", "val": 25}, "氧化铝": {"unit": "20 吨/手", "tick": "1 元/吨", "val": 20}, "沪镍": {"unit": "1 吨/手", "tick": "10 元/吨", "val": 10}, "沪锡": {"unit": "1 吨/手", "tick": "10 元/吨", "val": 10}, "铂": {"unit": "1000 克/手", "tick": "0.05 元/克", "val": 50}, "钯": {"unit": "1000 克/手", "tick": "0.05 元/克", "val": 50}, "黄金": {"unit": "1000 克/手", "tick": "0.02 元/克", "val": 20}, "白银": {"unit": "15 千克/手", "tick": "1 元/千克", "val": 15}, "工业硅": {"unit": "5 吨/手", "tick": "5 元/吨", "val": 25}, "碳酸锂": {"unit": "1 吨/手", "tick": "20 元/吨", "val": 20}, "多晶硅": {"unit": "3 吨/手", "tick": "5 元/吨", "val": 15}, "原油": {"unit": "1000 桶/手", "tick": "0.1 元/桶", "val": 100}, "胶版印刷纸": {"unit": "40 吨/手", "tick": "2 元/吨", "val": 80}, "橡胶": {"unit": "10 吨/手", "tick": "5 元/吨", "val": 50}, "20号胶": {"unit": "10 吨/手", "tick": "5 元/吨", "val": 50}, "纯苯": {"unit": "30 吨/手", "tick": "1 元/吨", "val": 30}, "瓶片": {"unit": "15 吨/手", "tick": "2 元/吨", "val": 30}, "烧碱": {"unit": "30 吨/手", "tick": "1 元/吨", "val": 30}, "合成橡胶": {"unit": "5 吨/手", "tick": "5 元/吨", "val": 25}, "欧线集运": {"unit": "50 指数点/手", "tick": "0.5 点", "val": 25}, "尿素": {"unit": "20 吨/手", "tick": "1 元/吨", "val": 20}, "液化气": {"unit": "20 吨/手", "tick": "1 元/吨", "val": 20}, "丙烯": {"unit": "20 吨/手", "tick": "1 元/吨", "val": 20}, "纸浆": {"unit": "10 吨/手", "tick": "2 元/吨", "val": 20}, "燃料油": {"unit": "10 吨/手", "tick": "1 元/吨", "val": 10}, "低硫燃料油": {"unit": "10 吨/手", "tick": "1 元/吨", "val": 10}, "沥青": {"unit": "10 吨/手", "tick": "1 元/吨", "val": 10}, "PTA": {"unit": "5 吨/手", "tick": "2 元/吨", "val": 10}, "乙二醇": {"unit": "10 吨/手", "tick": "1 元/吨", "val": 10}, "短纤": {"unit": "5 吨/手", "tick": "2 元/吨", "val": 10}, "甲醇": {"unit": "10 吨/手", "tick": "1 元/吨", "val": 10}, "对二甲苯": {"unit": "5 吨/手", "tick": "2 元/吨", "val": 10}, "苯乙烯": {"unit": "5 吨/手", "tick": "1 元/吨", "val": 5}, "聚乙烯": {"unit": "5 吨/手", "tick": "1 元/吨", "val": 5}, "PVC": {"unit": "5 吨/手", "tick": "1 元/吨", "val": 5}, "聚丙烯": {"unit": "5 吨/手", "tick": "1 元/吨", "val": 5}, "生猪": {"unit": "16 吨/手", "tick": "5 元/吨", "val": 80}, "普麦": {"unit": "50 吨/手", "tick": "1 元/吨", "val": 50}, "原木": {"unit": "90 立方米/手", "tick": "0.5 元/立方米", "val": 45}, "棉花": {"unit": "5 吨/手", "tick": "5 元/吨", "val": 25}, "棉纱": {"unit": "5 吨/手", "tick": "5 元/吨", "val": 25}, "红枣": {"unit": "5 吨/手", "tick": "5 元/吨", "val": 25}, "胶合板": {"unit": "500 张/手", "tick": "0.05 元/张", "val": 25}, "强麦": {"unit": "20 吨/手", "tick": "1 元/吨", "val": 20}, "粳稻": {"unit": "20 吨/手", "tick": "1 元/吨", "val": 20}, "早籼稻": {"unit": "20 吨/手", "tick": "1 元/吨", "val": 20}, "玉米": {"unit": "10 吨/手", "tick": "1 元/吨", "val": 10}, "玉米淀粉": {"unit": "10 吨/手", "tick": "1 元/吨", "val": 10}, "豆一": {"unit": "10 吨/手", "tick": "1 元/吨", "val": 10}, "豆二": {"unit": "10 吨/手", "tick": "1 元/吨", "val": 10}, "豆粕": {"unit": "10 吨/手", "tick": "1 元/吨", "val": 10}, "豆油": {"unit": "10 吨/手", "tick": "1 元/吨", "val": 10}, "棕榈油": {"unit": "10 吨/手", "tick": "1 元/吨", "val": 10}, "菜油": {"unit": "10 吨/手", "tick": "1 元/吨", "val": 10}, "菜籽粕": {"unit": "10 吨/手", "tick": "1 元/吨", "val": 10}, "菜籽": {"unit": "10 吨/手", "tick": "1 元/吨", "val": 10}, "白糖": {"unit": "10 吨/手", "tick": "1 元/吨", "val": 10}, "鸡蛋": {"unit": "5 吨/手", "tick": "1 元/500千克", "val": 10}, "苹果": {"unit": "10 吨/手", "tick": "1 元/吨", "val": 10}, "花生": {"unit": "5 吨/手", "tick": "2 元/吨", "val": 10}, "粳米": {"unit": "10 吨/手", "tick": "1 元/吨", "val": 10}, "纤维板": {"unit": "10 立方米/手", "tick": "0.5 元/立方米", "val": 5}, "三十年国债": {"unit": "10000 元/点", "tick": "0.01 元", "val": 100}, "沪深300": {"unit": "300 元/点", "tick": "0.2 点", "val": 60}, "上证50": {"unit": "300 元/点", "tick": "0.2 点", "val": 60}, "五年国债": {"unit": "10000 元/点", "tick": "0.005 元", "val": 50}, "十年国债": {"unit": "10000 元/点", "tick": "0.005 元", "val": 50}, "中证500": {"unit": "200 元/点", "tick": "0.2 点", "val": 40}, "中证1000": {"unit": "200 元/点", "tick": "0.2 点", "val": 40}, "二年国债": {"unit": "20000 元/点", "tick": "0.002 元", "val": 40}};
 
+function kbScrollTo(el, navEl) {
+  if (!el) return;
+  var nh = navEl ? navEl.offsetHeight : 0;
+  var y = el.getBoundingClientRect().top + window.pageYOffset - nh - 8;
+  window.scrollTo({ top: Math.max(y, 0), behavior: 'smooth' });
+}
+
 document.querySelectorAll('.colbtn').forEach(function(b) {
   b.addEventListener('click', function() {
     document.querySelectorAll('.colbtn').forEach(function(x) { x.classList.remove('active'); });
@@ -2980,7 +2992,7 @@ document.querySelectorAll('.colbtn').forEach(function(b) {
     pans.forEach(function(x) { x.classList.remove('active'); });
     if (btns[0]) btns[0].classList.add('active');
     if (pans[0]) pans[0].classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    kbScrollTo(col, col.querySelector('nav'));
   });
 });
 
@@ -2997,7 +3009,7 @@ document.querySelectorAll('.step-go').forEach(function(g) {
     if (tb) tb.classList.add('active');
     var t = col.querySelector('#' + pid);
     if (t) t.classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    kbScrollTo(t, col.querySelector('nav'));
   });
 });
 
@@ -3011,7 +3023,7 @@ document.querySelectorAll('.col').forEach(function(col) {
       b.classList.add('active');
       var t = col.querySelector('#' + b.dataset.p);
       if (t) t.classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      kbScrollTo(t, col.querySelector('nav'));
     });
   });
 });
