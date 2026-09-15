@@ -60,6 +60,12 @@
     cursor:pointer; padding:5px 12px; border:1px solid var(--blue); border-radius:18px; background:#fff; transition:all .15s; }
   .step-go:hover { background:var(--blue); color:#fff; }
 
+  .fab { position:fixed; right:14px; bottom:18px; z-index:30; display:none; align-items:center; gap:5px;
+    background:var(--red); color:#fff; border:none; border-radius:22px; padding:10px 16px;
+    font-size:13.5px; font-weight:700; font-family:inherit; cursor:pointer;
+    box-shadow:0 3px 12px rgba(0,0,0,.28); }
+  .fab:active { transform:scale(.95); }
+
   .card { background:var(--card); border:1px solid var(--line); border-radius:12px;
     padding:20px 22px; margin-bottom:16px; }
   h2 { font-size:19px; margin:0 0 14px; padding-left:11px; border-left:4px solid var(--red); }
@@ -2962,6 +2968,8 @@
 
 </div>
 
+<button class="fab" id="fabPath" title="回到学习路径">↺ 五步走</button>
+
 <footer><div class="inner">
   <strong>期货与期权入门知识库</strong>　·　纯交易知识普及版<br>
   内容范围：期货与期权基础概念、合约与交易术语、品种合约规格（交易单位／最小变动价位／跳点价值）、分板块分析框架、四个基本期权策略、希腊字母、风险管理原则、新手常见误区。不含行情报价、涨跌判断、新闻资讯、保证金与手续费金额。<br>
@@ -2977,6 +2985,28 @@ function kbScrollTo(el, navEl) {
   var nh = navEl ? navEl.offsetHeight : 0;
   var y = el.getBoundingClientRect().top + window.pageYOffset - nh - 8;
   window.scrollTo({ top: Math.max(y, 0), behavior: 'smooth' });
+}
+
+var fabEl = document.getElementById('fabPath');
+function updateFab() {
+  if (!fabEl) return;
+  var col = document.querySelector('.col.active');
+  var path = col ? col.querySelector('.path') : null;
+  if (!path) { fabEl.style.display = 'none'; return; }
+  var r = path.getBoundingClientRect();
+  var visible = r.bottom > 60 && r.top < window.innerHeight;
+  fabEl.style.display = visible ? 'none' : 'flex';
+}
+if (fabEl) {
+  fabEl.addEventListener('click', function() {
+    var col = document.querySelector('.col.active');
+    var path = col ? col.querySelector('.path') : null;
+    if (path) kbScrollTo(path, col.querySelector('nav'));
+  });
+  window.addEventListener('scroll', updateFab, { passive: true });
+  window.addEventListener('resize', updateFab);
+  setInterval(updateFab, 800);
+  updateFab();
 }
 
 document.querySelectorAll('.colbtn').forEach(function(b) {
